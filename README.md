@@ -48,7 +48,7 @@
 <div align="center">
   <h2>My Contributions</h2>
   <br>
-  <img alt="my contributions" src="https://raw.githubusercontent.com/MingcanYang/MingcanYang/output" />
+  <img alt="my contributions" src="./assets/contributions.png" />
   
   <br/><br/><br/>
 </div>
