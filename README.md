@@ -50,7 +50,7 @@
   <br>
   <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/MingcanYang/MingcanYang/output/github-contribution-grid-snake.svg" />
   
-  <br/><br/><br/>
+  <br/><br/>
 </div>
 
 ---
