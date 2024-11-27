@@ -11,9 +11,9 @@
   <a href="mailto:dy9504428@gmail.com" style="text-decoration: none;">
       <img src="https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red" target="_blank" />
   </a>&nbsp;
-    <a href="https://www.linkedin.com/in/mingcan-yang-362968327/" target="_blank" style="text-decoration: none;">
+  <a href="https://www.linkedin.com/in/mingcan-yang-362968327/" target="_blank" style="text-decoration: none;">
         <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
-    </a>
+  </a>
 </div>
 <hr /><br/>
 <h2 align="center">⚒️ Languages-Frameworks-Tools ⚒️</h2>
