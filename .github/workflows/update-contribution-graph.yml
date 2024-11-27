@@ -1,0 +1,31 @@
+name: Update Contribution Graph
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天凌晨自动运行
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  generate-contribution-graph:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检查代码
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 使用工具生成 GitHub Contribution 图片
+      - name: Generate Contribution Graph
+        run: |
+          pip install github-contributions-canvas
+          github-contributions-canvas --user your-username --output contributions.png
+
+      # 将生成的图片上传到仓库
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          mv contributions.png ./assets/contributions.png
+          git add ./assets/contributions.png
+          git commit -m "Update contributions graph" || echo "No changes to commit"
+          git push
