@@ -1,6 +1,6 @@
 import requests
 import matplotlib.pyplot as plt
-import matplotlib.dates as mdates  # 用于日期格式化
+import matplotlib.dates as mdates
 import os
 import datetime
 
@@ -42,25 +42,23 @@ def generate_contribution_image(weeks):
     fig, ax = plt.subplots(figsize=(15, 5))
     scatter = ax.scatter(dates, [0] * len(dates), c=counts, cmap="Greens", s=100, edgecolor="k", linewidth=0.5)
 
-    # 配置 y 轴
     ax.set_yticks([])
 
-    # 格式化 x 轴日期为月份缩写
+    # 使用 matplotlib.dates 处理 x 轴日期
     ax.xaxis.set_major_formatter(mdates.DateFormatter("%b"))
-    ax.xaxis.set_major_locator(mdates.MonthLocator())  # 每个月设置一个刻度
+    ax.xaxis.set_major_locator(mdates.MonthLocator())
 
     ax.set_title("GitHub Contributions", fontsize=16)
     plt.colorbar(scatter, label="Contributions")
     plt.tight_layout()
 
-    # 保存图片
     plt.savefig("contributions.png")
     plt.close()
 
 
 if __name__ == "__main__":
     username = "MingcanYang"  
-    token = os.getenv("PAT_TOKEN")  # 从环境变量中获取 Token
+    token = os.getenv("PAT_TOKEN")
     if not token:
         raise ValueError("PAT_TOKEN is not set. Please check your workflow environment.")
     weeks = get_contribution_data(username, token)
