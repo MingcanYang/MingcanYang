@@ -1,8 +1,10 @@
 import requests
 import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
+import seaborn as sns
+import pandas as pd
+import numpy as np
 import os
-import datetime
+from datetime import datetime, timedelta
 
 
 def get_contribution_data(username, token):
@@ -31,35 +33,50 @@ def get_contribution_data(username, token):
     return data["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
 
 
-def generate_contribution_image(weeks):
-    dates = []
-    counts = []
+def generate_contribution_heatmap(weeks):
+    # 解析贡献数据
+    contributions = []
     for week in weeks:
         for day in week["contributionDays"]:
-            dates.append(datetime.datetime.strptime(day["date"], "%Y-%m-%d"))
-            counts.append(day["contributionCount"])
+            contributions.append({
+                "date": datetime.strptime(day["date"], "%Y-%m-%d"),
+                "count": day["contributionCount"]
+            })
 
-    fig, ax = plt.subplots(figsize=(15, 5))
-    scatter = ax.scatter(dates, [0] * len(dates), c=counts, cmap="Greens", s=100, edgecolor="k", linewidth=0.5)
+    # 创建 DataFrame
+    df = pd.DataFrame(contributions)
+    df['week'] = df['date'].dt.isocalendar().week
+    df['weekday'] = df['date'].dt.weekday
 
-    ax.set_yticks([])
+    # 构建矩阵 (行: 周, 列: 星期)
+    pivot = df.pivot("weekday", "week", "count").fillna(0)
 
-    # 使用 matplotlib.dates 处理 x 轴日期
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%b"))
-    ax.xaxis.set_major_locator(mdates.MonthLocator())
+    # 绘制热力图
+    plt.figure(figsize=(15, 5))
+    sns.heatmap(pivot, cmap="Greens", linewidths=0.1, linecolor="white", cbar=True, square=True)
 
-    ax.set_title("GitHub Contributions", fontsize=16)
-    plt.colorbar(scatter, label="Contributions")
+    # 配置轴
+    plt.title("GitHub Contributions Heatmap", fontsize=16)
+    plt.xlabel("Week of Year", fontsize=12)
+    plt.ylabel("Day of Week", fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.yticks(
+        [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5],
+        ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+        rotation=0,
+        fontsize=10
+    )
+    
+    # 保存图片
     plt.tight_layout()
-
     plt.savefig("contributions.png")
     plt.close()
 
 
 if __name__ == "__main__":
-    username = "MingcanYang"  
-    token = os.getenv("PAT_TOKEN")
+    username = "MingcanYang"  # 替换为您的 GitHub 用户名
+    token = os.getenv("PAT_TOKEN")  # 从环境变量中读取 Personal Access Token
     if not token:
         raise ValueError("PAT_TOKEN is not set. Please check your workflow environment.")
     weeks = get_contribution_data(username, token)
-    generate_contribution_image(weeks)
+    generate_contribution_heatmap(weeks)
