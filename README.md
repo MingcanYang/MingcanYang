@@ -46,9 +46,9 @@
 
 <br/><br/>
 <div align="center">
-  <h2>My Contributions</h2>
+  <h2>🐍 My Contributions 🐍</h2>
   <br>
-  <img alt="my contributions" src="./assets/contributions.png" />
+  <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/MingcanYang/MingcanYang/output/github-contribution-grid-snake.svg" />
   
   <br/><br/><br/>
 </div>
