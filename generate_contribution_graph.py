@@ -55,6 +55,6 @@ def generate_contribution_image(weeks):
 
 if __name__ == "__main__":
     username = "MingcanYang"  
-    token = os.getenv("PAT_TOKEN")  
+    token = os.getenv("GITHUB_TOKEN")  
     weeks = get_contribution_data(username, token)
     generate_contribution_image(weeks)
