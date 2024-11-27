@@ -55,6 +55,8 @@ def generate_contribution_image(weeks):
 
 if __name__ == "__main__":
     username = "MingcanYang"  
-    token = os.getenv("PAT_TOKEN")  
+    token = os.getenv("PAT_TOKEN")
+    if not token:
+        raise ValueError("PAT_TOKEN is not set. Please check your workflow environment.")
     weeks = get_contribution_data(username, token)
     generate_contribution_image(weeks)
