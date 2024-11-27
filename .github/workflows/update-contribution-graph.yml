@@ -2,40 +2,34 @@ name: Update Contribution Graph
 
 on:
   schedule:
-    - cron: '0 0 * * *'  
-  workflow_dispatch:       
+    - cron: '0 0 * * *'  # 每天运行
+  workflow_dispatch:
 
 jobs:
   update-graph:
     runs-on: ubuntu-latest
 
     steps:
-  
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-  
       - name: Set Up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-     
       - name: Install Dependencies
         run: pip install requests matplotlib
 
-   
       - name: Create assets directory
         run: mkdir -p assets
 
-      
       - name: Generate Contribution Graph
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           python generate_contribution_graph.py
 
-     
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
