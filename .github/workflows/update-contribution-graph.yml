@@ -27,7 +27,7 @@ jobs:
       
       - name: Generate Contribution Graph
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python generate_contribution_graph.py
 
