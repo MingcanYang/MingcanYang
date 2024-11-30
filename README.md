@@ -1,3 +1,8 @@
+<!-- 
+- This project is based on code from salesp07 by Pedro Muniz (https://github.com/salesp07/salesp07).
+- The original code is licensed under the MIT License. 
+- Modifications and additional features are made by Mingcan Yang, 2024. -->
+
 <h1 align="center">
     <img src="https://readme-typing-svg.herokuapp.com/?font=Kanit&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+👋;+I'm+Mingcan+Yang!;" />
 </h1>
