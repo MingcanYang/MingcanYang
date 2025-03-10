@@ -12,14 +12,7 @@
 
 <br/>
 
-<div align="center">
-  <a href="mailto:dy9504428@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-333333?style=for-the-badge&logo=gmail&logoColor=red" />
-  </a>&nbsp;
-  <a href="https://www.linkedin.com/in/mingcan-yang-362968327" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank" />
-  </a>
-</div>
+
 <hr /><br/>
 <h2 align="center">⚒️ Languages-Frameworks-Tools ⚒️</h2>
 <br/>
