@@ -7,7 +7,7 @@
     <img src="https://readme-typing-svg.herokuapp.com/?font=Kanit&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+👋;+I'm+Mingcan+Yang!;" />
 </h1>
 
-<h3 align="center">A passionate Full Stack developer from Australia</h3>
+<h3 align="center">A passionate Full Stack developer in Australia</h3>
 <h3 align="center">Currently studying for Master of Information Technology</h3>
 
 <br/>
